@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Forge</title>
+<link rel="icon" type="image/svg+xml" href="/Favicon.svg">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- html2canvas for export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- App styles (modular — linked individually, in cascade order) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/topbar.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/canvas.css">
+  <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/style-toolbar.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       TOP BAR
+  ============================================================ -->
+  <header class="topbar">
+    <div class="topbar__left">
+     <div class="logo" aria-label="Card Forge">
+  <svg viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+    <!-- Back card -->
+    <rect x="5" y="6" width="18" height="12" rx="2.5" fill="#FBBF24"/>
+
+    <!-- Front card -->
+    <rect x="10" y="11" width="19" height="13" rx="2.5" fill="#111827"/>
+
+    <!-- Text -->
+    <rect x="14" y="15" width="9" height="2" rx="1" fill="#FFFFFF"/>
+    <rect x="14" y="19" width="7" height="2" rx="1" fill="#FFFFFF"/>
+  </svg>
+</div>
+      <span class="topbar__title">Card Forge</span>
+      <div class="topbar__sep"></div>
+      <span class="topbar__sub">20 templates</span>
+    </div>
+
+    <div class="topbar__right">
+      <!-- Dark Mode Toggle -->
+      <div class="dm-toggle" id="dmToggle" role="switch" aria-checked="false" title="Toggle dark mode (D)">
+        <i class="fas fa-sun dm-toggle__icon" id="dmIcon" aria-hidden="true"></i>
+        <div class="dm-toggle__track">
+          <div class="dm-toggle__thumb"></div>
+        </div>
+        <span class="dm-toggle__label" id="dmLabel">Light</span>
+      </div>
+
+      <button class="btn btn--ghost" id="btnFlip" title="Flip card (Space)">
+        <i class="fas fa-sync-alt"></i> Flip
+      </button>
+      <button class="btn btn--ghost" id="btnPrint" title="Print">
+        <i class="fas fa-print"></i> Print
+      </button>
+      <button class="btn btn--primary" id="btnExportPng">
+        <i class="fas fa-download"></i> Export PNG
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN WORKSPACE
+  ============================================================ -->
+  <div class="workspace">
+
+    <!-- ──────────────────────────────────────────────────────────
+         SIDEBAR
+    ────────────────────────────────────────────────────────── -->
+    <aside class="sidebar" aria-label="Card settings">
+
+      <!-- Templates -->
+      <div class="section">
+        <div class="section__header is-open" data-section="templates">
+          Templates
+          <i class="fas fa-chevron-down chevron" aria-hidden="true"></i>
+        </div>
+        <div class="section__body" id="body-templates">
+          <div class="template-grid" id="templateGrid"></div>
+        </div>
+      </div>
+
+      <!-- Your Details -->
+      <div class="section">
+        <div class="section__header is-open" data-section="details">
+          Your Details
+          <i class="fas fa-chevron-down chevron" aria-hidden="true"></i>
+        </div>
+        <div class="section__body" id="body-details">
+
+          <div class="field">
+            <label class="field__label" for="iName">Full name *</label>
+            <input class="field__input" id="iName" type="text" value="Alex Morgan" placeholder="Full name" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="iTitle">Job title *</label>
+            <input class="field__input" id="iTitle" type="text" value="Product Designer" placeholder="Job title" />
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="iCompany">Company</label>
+            <input class="field__input" id="iCompany" type="text" value="Studio One" placeholder="Company name" autocomplete="organization" />
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label class="field__label" for="iPhone">Phone</label>
+              <input class="field__input" id="iPhone" type="tel" value="+1 234 567 8900" placeholder="+1 234 567 8900" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="iEmail">Email</label>
+              <input class="field__input" id="iEmail" type="email" value="alex@studio.com" placeholder="you@example.com" autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="iWeb">Website</label>
+            <input class="field__input" id="iWeb" type="text" value="www.studio.com" placeholder="www.example.com" />
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="iTag">Tagline</label>
+            <input class="field__input" id="iTag" type="text" value="" placeholder="Short tagline (optional)" />
+          </div>
+
+          <div class="divider-label">Social (optional)</div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label class="field__label" for="iLI"><i class="fab fa-linkedin"></i> LinkedIn</label>
+              <input class="field__input" id="iLI" type="url" placeholder="linkedin.com/in/…" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="iX"><i class="fab fa-x-twitter"></i> X</label>
+              <input class="field__input" id="iX" type="url" placeholder="x.com/…" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label class="field__label" for="iGH"><i class="fab fa-github"></i> GitHub</label>
+              <input class="field__input" id="iGH" type="url" placeholder="github.com/…" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="iIG"><i class="fab fa-instagram"></i> Instagram</label>
+              <input class="field__input" id="iIG" type="url" placeholder="instagram.com/…" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </aside><!-- /sidebar -->
+
+    <!-- ──────────────────────────────────────────────────────────
+         CANVAS + TOOLBAR
+    ────────────────────────────────────────────────────────── -->
+    <main class="main">
+
+      <!-- Card Canvas -->
+      <div class="canvas-area">
+        <div class="canvas-stack">
+
+          <!-- Floating style toolbar — centered above the card -->
+          <div class="style-toolbar">
+            <div class="font-pills">
+              <div class="font-pill is-active" data-font="Inter">Sans</div>
+              <div class="font-pill" data-font="Playfair Display">Serif</div>
+              <div class="font-pill" data-font="Cormorant Garamond">Luxury</div>
+              <div class="font-pill" data-font="DM Serif Display">Editorial</div>
+              <div class="font-pill" data-font="Space Mono">Mono</div>
+            </div>
+
+            <div class="style-toolbar__divider"></div>
+
+            <div class="color-row" id="accentRow" title="Accent color">
+              <div class="color-swatch is-active" data-accent="#18180f" style="background:#18180f" title="Charcoal"></div>
+              <div class="color-swatch" data-accent="#2563eb" style="background:#2563eb" title="Blue"></div>
+              <div class="color-swatch" data-accent="#7c3aed" style="background:#7c3aed" title="Violet"></div>
+              <div class="color-swatch" data-accent="#db2777" style="background:#db2777" title="Pink"></div>
+              <div class="color-swatch" data-accent="#059669" style="background:#059669" title="Emerald"></div>
+              <div class="color-swatch" data-accent="#d97706" style="background:#d97706" title="Amber"></div>
+              <div class="color-swatch" data-accent="#dc2626" style="background:#dc2626" title="Red"></div>
+              <div class="color-swatch" data-accent="#0891b2" style="background:#0891b2" title="Cyan"></div>
+              <div class="color-swatch" data-accent="#be185d" style="background:#be185d" title="Rose"></div>
+              <div class="color-swatch" data-accent="#c2410c" style="background:#c2410c" title="Orange"></div>
+              <div class="color-swatch color-swatch--rainbow" title="Custom accent color">
+                <input type="color" id="customAccent" value="#18180f" aria-label="Custom accent color" />
+              </div>
+            </div>
+
+            <div class="style-toolbar__divider"></div>
+
+            <div class="color-row" id="bgRow" title="Card background">
+              <div class="color-swatch is-active" data-bg="#ffffff" style="background:#fff;border:1.5px solid #ddd" title="White"></div>
+              <div class="color-swatch" data-bg="#0e0e0c" style="background:#0e0e0c" title="Near-black"></div>
+              <div class="color-swatch" data-bg="#1e2a3a" style="background:#1e2a3a" title="Navy"></div>
+              <div class="color-swatch" data-bg="#1a0b2e" style="background:#1a0b2e" title="Deep violet"></div>
+              <div class="color-swatch" data-bg="#0d2818" style="background:#0d2818" title="Forest"></div>
+              <div class="color-swatch" data-bg="#f8f4ef" style="background:#f8f4ef;border:1.5px solid #ddd" title="Cream"></div>
+              <div class="color-swatch" data-bg="#fef9ec" style="background:#fef9ec;border:1.5px solid #ddd" title="Warm white"></div>
+              <div class="color-swatch" data-bg="#0c1a2e" style="background:#0c1a2e" title="Midnight"></div>
+              <div class="color-swatch" data-bg="#1c1200" style="background:#1c1200" title="Dark bronze"></div>
+              <div class="color-swatch color-swatch--rainbow" title="Custom background">
+                <input type="color" id="customBg" value="#ffffff" aria-label="Custom background color" />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-wrapper">
+          <div class="flip-scene">
+            <div class="flip-card" id="flipCard">
+
+              <!-- Front face -->
+              <div class="flip-card__face flip-card__face--front">
+                <div id="card-front">
+                  <div class="card-inner" id="cardInner"></div>
+                </div>
+              </div>
+
+              <!-- Back face -->
+              <div class="flip-card__face flip-card__face--back" id="cardBack">
+                <div class="card-back__company" id="backCompany">Studio One</div>
+                <div class="card-back__dot" id="backDot"></div>
+                <div class="card-back__tagline" id="backTagline">excellence · design · vision</div>
+              </div>
+
+            </div>
+          </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Toolbar -->
+      <div class="bottom-bar">
+        <div class="bottom-bar__hints">
+          <span class="kbd">⌘S</span>
+          <span class="kbd-hint">PNG ·</span>
+          <span class="kbd">⌘E</span>
+          <span class="kbd-hint">JPG ·</span>
+          <span class="kbd">Space</span>
+          <span class="kbd-hint">Flip ·</span>
+          <span class="kbd">D</span>
+          <span class="kbd-hint">Dark mode</span>
+        </div>
+        <div class="bottom-bar__actions">
+          <button class="btn btn--ghost" id="btnExportJpg" style="padding:7px 12px">
+            <i class="fas fa-image"></i> Export JPG
+          </button>
+        </div>
+      </div>
+
+    </main>
+
+  </div><!-- /workspace -->
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="fas fa-check-circle" id="toastIcon" aria-hidden="true"></i>
+    <span id="toastMsg"></span>
+  </div>
+
+  <!-- ============================================================
+       APPLICATION (ES module — see /js/main.js)
+  ============================================================ -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
