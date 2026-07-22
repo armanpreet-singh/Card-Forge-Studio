@@ -114,7 +114,16 @@ card-forge/
 or use VS Code Live Server for the best development experience.
 
 ---
+## 🏗 Architecture
 
+The application follows a modular JavaScript architecture:
+
+- **UI Layer** – Handles rendering and user interactions.
+- **State Layer** – Stores and updates application data.
+- **Template Layer** – Manages predefined business card layouts.
+- **Storage Layer** – Persists user data using LocalStorage.
+- **Export Layer** – Generates high-quality PNG images.
+- **Utility Layer** – Provides reusable helper functions.
 ## 🎯 Usage
 
 1. Select a business card template.
