@@ -64,72 +64,53 @@ Browse from 20 professionally designed business card templates to quickly create
 ```text
 card-forge/
 │
-├── index.html
+├── index.html                  # Main entry point of the application
 │
 ├── css/
-│   ├── variables.css
-│   ├── base.css
-│   ├── topbar.css
-│   ├── sidebar.css
-│   ├── canvas.css
-│   ├── card.css
-│   ├── style-toolbar.css
-│   ├── toast.css
-│   └── responsive.css
+│   ├── variables.css           # Global CSS variables (colors, spacing, typography)
+│   ├── base.css                # Base styles, resets, and common utilities
+│   ├── topbar.css              # Header and navigation styling
+│   ├── sidebar.css             # Sidebar layout and controls
+│   ├── canvas.css              # Main editor workspace layout
+│   ├── card.css                # Business card component styles
+│   ├── style-toolbar.css       # Toolbar, buttons, and editing controls
+│   ├── toast.css               # Toast notification styles
+│   └── responsive.css          # Responsive layouts and media queries
 │
 ├── js/
-│   ├── main.js
-│   ├── state.js
-│   ├── storage.js
-│   ├── export.js
+│   ├── main.js                 # Application entry point and initialization
+│   ├── state.js                # Global application state management
+│   ├── storage.js              # LocalStorage save/load functionality
+│   ├── export.js               # PNG export using html2canvas
 │   │
 │   ├── templates/
-│   │   ├── templates.js
-│   │   ├── helpers.js
-│   │   └── index.js
+│   │   ├── templates.js        # Collection of business card templates
+│   │   ├── helpers.js          # Shared template utility functions
+│   │   └── index.js            # Template loading and selection logic
 │   │
 │   ├── ui/
-│   │   ├── render.js
-│   │   ├── inputs.js
-│   │   ├── colors.js
-│   │   ├── fonts.js
-│   │   ├── darkMode.js
-│   │   ├── flip.js
-│   │   ├── keyboard.js
-│   │   ├── accordion.js
-│   │   ├── print.js
-│   │   └── toast.js
+│   │   ├── render.js           # Renders the business card preview
+│   │   ├── inputs.js           # Handles form inputs and live updates
+│   │   ├── colors.js           # Color picker functionality
+│   │   ├── fonts.js            # Font selection and typography controls
+│   │   ├── darkMode.js         # Dark/light theme switching
+│   │   ├── flip.js             # Front/back card flip animation
+│   │   ├── keyboard.js         # Keyboard shortcuts
+│   │   ├── accordion.js        # Sidebar accordion interactions
+│   │   ├── print.js            # Print functionality
+│   │   └── toast.js            # Toast notification logic
 │   │
 │   └── utils/
-│       └── color.js
+│       └── color.js            # Color conversion and helper utilities
 │
-└── README.md
+├── assets/                     # Icons, logos, screenshots, and images
+│
+├── favicon.svg                 # Application favicon
+│
+├── LICENSE                     # MIT License
+│
+└── README.md                   # Project documentation
 ```
-
----
-
-## 🚀 Getting Started
-
-### Clone the repository
-
-```bash
-git clone https://github.com/yourusername/card-forge.git
-```
-
-### Navigate into the project
-
-```bash
-cd card-forge
-```
-
-### Open in your browser
-
-Simply open:
-
-```text
-index.html
-```
-
 or use VS Code Live Server for the best development experience.
 
 ---
