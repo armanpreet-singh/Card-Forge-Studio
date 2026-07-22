@@ -1,13 +1,14 @@
 # 🎨 Card Forge
 
-A modern, browser-based business card designer that lets users create professional business cards with live editing, customizable templates, instant previews, dark mode, and high-quality PNG export—no installation required.
+A modern business card generator with live preview, customizable templates, dark mode, and high-quality PNG export.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![HTML](https://img.shields.io/badge/HTML-5-orange)
-![CSS](https://img.shields.io/badge/CSS-3-blue)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
-
----
+<p align="center">
+  <img
+    src="https://res.cloudinary.com/aveqwdxd/image/upload/v1784704238/cardForge_e4lqfy.png"
+    alt="Card Forge Preview"
+    width="1000"
+  />
+</p>
 
 ## ✨ Features
 
