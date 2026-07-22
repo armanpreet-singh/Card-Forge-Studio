@@ -1,0 +1,176 @@
+/* ============================================================
+   SIDEBAR
+============================================================ */
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: background .22s, border-color .22s;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+
+/* ============================================================
+   SIDEBAR SECTIONS (Accordion)
+============================================================ */
+.section { border-bottom: 1px solid var(--border); }
+
+.section__header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 10.5px; font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase; letter-spacing: .9px;
+  transition: background .12s;
+}
+.section__header:hover { background: var(--sidebar-hover); }
+.section__header .chevron {
+  font-size: 9px; color: var(--text-3);
+  transition: transform .2s;
+}
+.section__header.is-open .chevron { transform: rotate(180deg); }
+
+.section__body {
+  padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.section__body.is-hidden { display: none; }
+
+/* ============================================================
+   FORM FIELDS
+============================================================ */
+.field { display: flex; flex-direction: column; gap: 4px; }
+
+.field__label {
+  font-size: 11px; font-weight: 500;
+  color: var(--text-2);
+  display: flex; align-items: center; gap: 5px;
+}
+.field__label i { font-size: 10px; }
+
+.field__input {
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-family: inherit;
+  color: var(--text);
+  transition: border-color .15s, box-shadow .15s, background .22s, color .22s;
+}
+.field__input:focus {
+  outline: none;
+  border-color: var(--text-2);
+  box-shadow: 0 0 0 3px rgba(128,128,120,.1);
+}
+.field__input::placeholder { color: var(--text-3); font-size: 12px; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+.divider-label {
+  font-size: 10px; font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase; letter-spacing: .7px;
+  padding: 4px 0 2px;
+  border-top: 1px solid var(--border);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   COLOR PICKERS
+============================================================ */
+.color-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+.color-swatch {
+  width: 21px; height: 21px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform .14s, box-shadow .14s;
+}
+.color-swatch:hover { transform: scale(1.16); }
+.color-swatch.is-active {
+  border-color: var(--text);
+  box-shadow: 0 0 0 1.5px var(--surface), 0 0 0 3px var(--text);
+}
+.color-swatch--rainbow {
+  background: conic-gradient(red, orange, yellow, green, blue, violet, red);
+  overflow: hidden;
+}
+.color-swatch--rainbow input {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+}
+
+/* ============================================================
+   FONT PILLS
+============================================================ */
+.font-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.font-pill {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--surface-alt);
+  color: var(--text-2);
+  transition: all .14s;
+}
+.font-pill:hover { border-color: var(--border-strong); }
+.font-pill.is-active {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border-color: var(--btn-bg);
+}
+
+/* ============================================================
+   TEMPLATE GRID
+============================================================ */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.template-item {
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-alt);
+  transition: border-color .15s, box-shadow .15s;
+}
+.template-item:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 3px 12px rgba(0,0,0,.1);
+}
+.template-item.is-active {
+  border-color: var(--text);
+  box-shadow: 0 0 0 1px var(--text);
+}
+
+.template-item__preview {
+  aspect-ratio: 5 / 3;
+  position: relative;
+  overflow: hidden;
+}
+
+.template-item__label {
+  font-size: 9px; font-weight: 500;
+  color: var(--text-2);
+  text-align: center;
+  padding: 4px 3px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
