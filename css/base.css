@@ -1,0 +1,15 @@
+/* ============================================================
+   BASE
+============================================================ */
+html { scroll-behavior: smooth; height: 100%; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background .22s, color .22s;
+  -webkit-font-smoothing: antialiased;
+}
