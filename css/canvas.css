@@ -1,0 +1,61 @@
+/* ============================================================
+   LAYOUT — MAIN CANVAS
+============================================================ */
+.workspace {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.canvas-area {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px;
+  padding-top: 56px;
+  overflow: auto;
+  background: var(--bg);
+  transition: background .22s;
+}
+
+/* Dotted grid background */
+.canvas-area::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--canvas-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: .5;
+  pointer-events: none;
+}
+
+/* Bottom toolbar */
+.bottom-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 20px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  transition: background .22s, border-color .22s;
+}
+.bottom-bar__hints { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.bottom-bar__actions { display: flex; gap: 7px; }
+.kbd {
+  background: var(--kbd-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 9.5px;
+  padding: 2px 5px;
+  color: var(--text-2);
+}
+.kbd-hint { font-size: 11px; color: var(--text-3); margin-right: 8px; }
