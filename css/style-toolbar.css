@@ -1,0 +1,58 @@
+/* ============================================================
+   FLOATING STYLE TOOLBAR
+   A dark, rounded "pill" toolbar centered above the card,
+   holding font + color controls (Canva/Figma-style).
+============================================================ */
+
+/* Stack: toolbar on top, card below, centered as a group */
+.canvas-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.style-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #101012;
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06);
+}
+
+.style-toolbar__divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255,255,255,.14);
+  flex-shrink: 0;
+}
+
+/* Font pills — overridden for the dark toolbar (independent of light/dark app theme) */
+.style-toolbar .font-pills { display: flex; gap: 4px; flex-wrap: nowrap; }
+.style-toolbar .font-pill {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,.65);
+  background: transparent;
+  border: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.style-toolbar .font-pill:hover { background: rgba(255,255,255,.08); color: #fff; }
+.style-toolbar .font-pill.is-active { background: #fff; color: #101012; }
+
+/* Color rows — smaller swatches to fit the compact pill */
+.style-toolbar .color-row { display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; }
+.style-toolbar .color-swatch { width: 18px; height: 18px; }
+.style-toolbar .color-swatch.is-active {
+  border-color: #fff;
+  box-shadow: 0 0 0 1.5px #101012, 0 0 0 3px #fff;
+}
+.style-toolbar .color-swatch--rainbow { width: 18px; height: 18px; }
