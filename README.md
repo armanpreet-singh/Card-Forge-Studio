@@ -28,12 +28,20 @@ A modern business card generator with live preview, customizable templates, dark
 
 ## 📸 Preview
 
+### 🌞 Light Mode
+
+Modern editing interface with real-time business card preview, customizable colors, fonts, and export options.
+
 <p align="center">
-  <img
-    src="https://res.cloudinary.com/aveqwdxd/image/upload/v1784704238/cardForge_e4lqfy.png"
-    alt="Card Forge Preview"
-    width="1000"
-  />
+  <img src="https://res.cloudinary.com/aveqwdxd/image/upload/v1784704690/Card-light_jppqqt.png">
+</p>
+
+### 🖼 Template Gallery
+
+Browse from 20 professionally designed business card templates to quickly create personalized designs.
+
+<p align="center">
+  <img src="https://res.cloudinary.com/aveqwdxd/image/upload/v1784704690/templates_u9otin.png">
 </p>
 
 
