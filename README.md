@@ -2,12 +2,26 @@
 
 A modern business card generator with live preview, customizable templates, dark mode, and high-quality PNG export.
 
+
 <p align="center">
   <img
     src="https://res.cloudinary.com/aveqwdxd/image/upload/v1784704238/cardForge_e4lqfy.png"
     alt="Card Forge Preview"
     width="1000"
   />
+    <div align="center">
+
+<a href="https://card-forge-studio.pages.dev/">
+  <img
+    src="https://res.cloudinary.com/aveqwdxd/image/upload/v1784794610/cloudflare_live_wlcizi.png"
+    alt="Live at Cloudflare"
+    width="220"
+  />
+</a>
+
+<sub><strong>👆 Click the badge to open the live demo</strong></sub>
+
+</div>
 </p>
 
 ## ✨ Features
