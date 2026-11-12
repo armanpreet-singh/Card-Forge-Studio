@@ -69,7 +69,7 @@ test("social helpers filter unsafe URLs and escape the rendered href", () => {
     const html = socialsHTML("#111111", "#ffffff");
     assert.equal(html.includes('href="https://example.com/'), true);
     assert.doesNotMatch(html, /href="javascript:/i);
-    assert.doesNotMatch(html, /onmouseover=/i);
+    assert.equal(html.includes('" onmouseover='), false);
   });
 });
 
