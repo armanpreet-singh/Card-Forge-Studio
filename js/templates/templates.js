@@ -1,6 +1,34 @@
-import { state } from '../state.js';
+import { state as rawState } from '../state.js';
 import { isLight, mixHex } from '../utils/color.js';
+import { escapeHTML, normalizeFontFamily, normalizeHexColor } from '../utils/sanitize.js';
 import { getInitials, socialsHTML, contactRowsHTML } from './helpers.js';
+
+// Template strings are rendered as HTML. Escape all user-controlled text and
+// restrict values used in CSS declarations before they reach innerHTML.
+const textFields = new Set(['name', 'title', 'company', 'tag']);
+const state = new Proxy(rawState, {
+  get(target, property, receiver) {
+    const value = Reflect.get(target, property, receiver);
+
+    if (textFields.has(property)) {
+      return escapeHTML(value);
+    }
+
+    if (property === 'bg') {
+      return normalizeHexColor(value, '#ffffff');
+    }
+
+    if (property === 'accent') {
+      return normalizeHexColor(value, '#18180f');
+    }
+
+    if (property === 'font') {
+      return normalizeFontFamily(value, 'Inter');
+    }
+
+    return value;
+  },
+});
 
 /* ================================================================
    TEMPLATES — 20 designs
