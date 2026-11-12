@@ -29,6 +29,7 @@ jobs:
           node --check js/storage.js
           node --check js/templates/helpers.js
           node --check js/templates/templates.js
+          node --check tests/security.test.js
 
       - name: Run security regression tests
         run: npm test
